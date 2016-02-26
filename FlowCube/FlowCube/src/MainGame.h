@@ -8,6 +8,7 @@
 #include "Goal.h"
 #include "StageRead.h"
 #include "TutorialWindow.h"
+#include "StageNum.h"
 #include <vector>
 //TODOLIST:
 
@@ -21,12 +22,12 @@
 class MainGame : public SceneBase
 {
 public:
-  MainGame(){ }
-  void SetUp();
+  MainGame(){}
+  MainGame(SceneChanger* changer) : SceneBase(changer) {}
+  void SetUp(int stageNum_);
   void Update();
   void Draw();
   void BgmUpdate();
-  void SetStageNum(int num_){ num = num_; };
   void Result();
   void ChoicePause();
   void PauseUpdate();
@@ -48,7 +49,6 @@ private:
   StageData data;
   Vec2f startPos;
   Vec2f mousePos;
-  int num = 0;
   bool pause;
   bool clear;
   Vec2f pausePos;

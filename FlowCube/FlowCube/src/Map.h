@@ -11,7 +11,7 @@
 //TODO:オブジェクトを増やしたらOBJECT_NUMも増やす
 enum MapObject
 {
-   NONE,
+   NONEOBJECT,
    WALL,
    PENDULUM,
    MAGNET,

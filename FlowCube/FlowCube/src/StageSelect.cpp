@@ -1,14 +1,16 @@
 #include "StageSelect.h"
+//TODO:読み込みを失敗している。
+
 
 StageSelect::StageSelect()
 {
-  SetUp();
 }
 //-------------------------------------------//
 //                  初期化                   //
 //-------------------------------------------//
-void StageSelect::SetUp()
+void StageSelect::SetUp(int stageNum_)
 {
+  stageNum = stageNum_;
   uibox[9].SetUp(1, Color::red);
   uibox[8].SetUp(2, Color::magenta);
   uibox[7].SetUp(3, Color::yellow);
@@ -27,11 +29,9 @@ void StageSelect::SetUp()
   rotateDirection = 1;
   putAngle = 0;
   putAngle2 = 0;
-  stagenum = 1;
   sceneChange = false;
   isEnd = false;
   deleteMode = false;
-  stagenum = 1;
   changeTime = SCENECHANGE_TIME;
   change = false;
   changeAngle = 0;
@@ -42,7 +42,7 @@ void StageSelect::SetUp()
   popcount = rand(20, 120);
   time = 0;
   motionspeed = 0.08f;
-  //tutorialWindow.SetUp();
+
   for (int i = 0; i < STAGEMAX; i++)
   {
     read.SetStageNum(i+1);
@@ -57,6 +57,7 @@ void StageSelect::SetUp()
 
   swipe.SetUp();
   swipe.SetRangeLimit(Vec2f(100,100));
+  rotateAngle = (stageNum-1) *angle;
 }
 
 //-------------------------------------------//
@@ -96,8 +97,8 @@ void StageSelect::Draw()
   }
 
   font.size(50);
-  std::string stage_c = std::to_string(stagenum);
-  font.draw("ステージ" + stage_c,Vec2f(-125-(12*(stagenum/10)),Window::HEIGHT/2-120),Color::white);
+  std::string stage_c = std::to_string(stageNum);
+  font.draw("ステージ" + stage_c, Vec2f(-125 - (12 * (stageNum / 10)), Window::HEIGHT / 2 - 120), Color::white);
   font.size(30);
   font.draw("←,→: ステージ選択   ENTER: 決定 ", Vec2f(-Window::WIDTH / 2, Window::HEIGHT / 2 - 30), Color::white);
   drawFillBox(-Window::WIDTH / 2, -Window::HEIGHT / 2, Window::WIDTH, Window::HEIGHT, Color(1,1,1,faidα));
@@ -120,7 +121,7 @@ void StageSelect::Motion()
     uibox[i].SetSelectActive(false);
     putPos.x() = centerPos.x() + range* cos(j*angle + angle / 2 + rotateAngle + changeAngle) - UIBOX_SIZE / 2;
     putPos.y() = centerPos.y() + range* sin(j*angle + angle / 2 + rotateAngle + changeAngle) - UIBOX_SIZE / 2;
-    if (stagenum == uibox[i].GetNum())
+    if (stageNum == uibox[i].GetNum())
     {
       uibox[i].SetSelectActive(true);
     }
@@ -152,37 +153,36 @@ void StageSelect::Motion()
 
 void StageSelect::Input()
 {
-  if (!(stagenum > STAGEMAX))
+  if (!(stageNum > STAGEMAX))
     if (env.isPushKey(GLFW_KEY_RIGHT))
     {
       motionActive = true;
       rotateDirection = 1;
-      stagenum++;
+      stageNum++;
     }
-  if (!(stagenum <= 1))
+  if (!(stageNum <= 1))
     if (env.isPushKey(GLFW_KEY_LEFT))
     {
       motionActive = true;
       rotateDirection = -1;
-      stagenum--;
+      stageNum--;
     }
  
-  if (!(stagenum > STAGEMAX))
+  if (!(stageNum > STAGEMAX))
   if (swipe.GetOneFrameDifference().x() < -5)
   {
     motionActive = true;
     rotateDirection = 1;
-    stagenum++;
+    stageNum++;
   }
 
-  Texture;
 
-  if (!(stagenum <= 1))
+  if (!(stageNum <= 1))
   if (swipe.GetOneFrameDifference().x() > 5)
   {
     motionActive = true;
     rotateDirection = -1;
-    stagenum--;
+    stageNum--;
   }
 
   
@@ -194,7 +194,7 @@ void StageSelect::Input()
 
   //TODO:どこかをクリックしたらに変える
   //TODO:配列の踏み外してるから直す
-  if (data[stagenum-2].clear)
+  if (data[stageNum - 1].clear)
   if (env.isPushKey(GLFW_KEY_ENTER))
   {
     env.flushInput();
@@ -228,7 +228,7 @@ void StageSelect::ChangeSceneMotion()
 
     if (changeTime == 100)
     {
-      std::swap(uibox[9], uibox[10-stagenum]);
+      std::swap(uibox[9], uibox[10 - stageNum]);
     }
 
     if (centerPos.y() > 0)
@@ -238,7 +238,7 @@ void StageSelect::ChangeSceneMotion()
 
     if (changeTime <= 0)
     {
-      isEnd = true;
+      sceneChanger->ChangeScene(SceneKey::MAINGAME);
       bgm.stop();
     }
 
@@ -246,7 +246,7 @@ void StageSelect::ChangeSceneMotion()
     {
       bgm.stop();
       seSelect.play();
-      isEnd = true;
+      sceneChanger->ChangeScene(SceneKey::MAINGAME);
     }
     changeTime--;
   }
@@ -286,6 +286,7 @@ void StageSelect::BackGroundUpdate()
       players[players.size() - 1].SetSize(Vec2f(size, size));
       popcount = rand(20, 120);
     }
+
   if (players.size() > 0)
     for (auto& p : players)
     {

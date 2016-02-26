@@ -5,6 +5,7 @@
 #include "StageRead.h"
 #include "Player.h"
 #include "Swipe.h"
+#include "StageNum.h"
 
 #define STAGENUM 10
 #define STAGEMAX 9
@@ -15,23 +16,13 @@ class StageSelect: public SceneBase
 {
 public:
   StageSelect();
-  void SetUp();
+  StageSelect(SceneChanger* changer) : SceneBase(changer) {}
+  void SetUp(int stageNum_);
   void Update();
   void Draw();
-  int GetStageNum(){ return stagenum; }
   void BgmUpdate();
   void BackGroundUpdate();
-  void SetStageNum(int num_){ 
-    stagenum = num_; 
-    motionspeed = 1.1f;
-    for (int i = 0; i < num_ - 1;i++)
-    {
-      motionActive = true;
-      Motion();
-    }
-    motionTime = 0;
-    motionspeed = 0.08f;
-  }
+  
 private:
 
   void Input();
@@ -40,7 +31,6 @@ private:
 
   StageData data[STAGEMAX];
   StageRead read;
-  int stagenum;
   UiBox uibox[STAGENUM];
   std::vector <Player> players;
   Swipe swipe;

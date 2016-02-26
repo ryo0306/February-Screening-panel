@@ -30,7 +30,7 @@ void Map::ReadFile(const std::string& file_)
     for (auto map : row){
      
       if (map == '0')
-        stage[x][y] = MapObject::NONE;
+        stage[x][y] = MapObject::NONEOBJECT;
       else if (map == '1')
         stage[x][y] = MapObject::WALL;
       else if (map == '2')
@@ -42,7 +42,7 @@ void Map::ReadFile(const std::string& file_)
       else if (map == '5')
         stage[x][y] = MapObject::GOAL;
       else
-        stage[x][y] = MapObject::NONE;
+        stage[x][y] = MapObject::NONEOBJECT;
       x += 1;
     }
     y -= 1;
@@ -89,7 +89,7 @@ void Map::Draw()
     {
       switch (stage[x][y])
       {
-      case MapObject::NONE:
+      case MapObject::NONEOBJECT:
         drawFillBox(x*MAPCHIP_SIZE - Window::WIDTH / 2,
                     y*MAPCHIP_SIZE - Window::HEIGHT / 2,
                     MAPCHIP_SIZE, MAPCHIP_SIZE,

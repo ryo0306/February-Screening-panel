@@ -12,7 +12,8 @@ class Title : public SceneBase
 {
 public:
   Title();
-  void SetUp();
+  Title(SceneChanger* changer) : SceneBase(changer) {}
+  void SetUp(int stageNum_);
   void Update();
   void BgmUpdate();
   void LogoUpdate();

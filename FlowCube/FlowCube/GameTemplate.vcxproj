@@ -59,10 +59,14 @@
     <ClInclude Include="src\ResourceManager.h" />
     <ClInclude Include="src\Result.h" />
     <ClInclude Include="src\SceneBase.h" />
+    <ClInclude Include="src\SceneChanger.h" />
+    <ClInclude Include="src\SceneManager.h" />
     <ClInclude Include="src\ScreenMake.h" />
+    <ClInclude Include="src\StageNum.h" />
     <ClInclude Include="src\StageRead.h" />
     <ClInclude Include="src\StageSelect.h" />
     <ClInclude Include="src\Swipe.h" />
+    <ClInclude Include="src\Task.h" />
     <ClInclude Include="src\Title.h" />
     <ClInclude Include="src\TutorialWindow.h" />
     <ClInclude Include="src\UiBox.h" />
@@ -102,6 +106,7 @@
     <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\ResourceManager.cpp" />
     <ClCompile Include="src\Result.cpp" />
+    <ClCompile Include="src\SceneManager.cpp" />
     <ClCompile Include="src\StageRead.cpp" />
     <ClCompile Include="src\StageSelect.cpp" />
     <ClCompile Include="src\Swipe.cpp" />

@@ -3,17 +3,18 @@
 //-------------------------------------------//
 //                 ‰Šú‰»                    //
 //-------------------------------------------//
-void MainGame::SetUp()
+void MainGame::SetUp(int stageNum_)
 {
+  stageNum = stageNum_;
   goals.clear();
   pendulums.clear();
   magnets.clear();
   walls.clear();
   pauseSize = Vec2f(80, 80);
   pausePos = Vec2f(-Window::WIDTH / 2, Window::HEIGHT / 2 - pauseSize.y());
-  file_path = "res/stage" + std::to_string(num) + ".txt";
+  file_path = "res/stage" + std::to_string(stageNum) + ".txt";
   map.ReadFile(file_path);
-  read.SetStageNum(num);
+  read.SetStageNum(stageNum);
   read.SearchData();
   data = read.GetData();
   ObjectSetting();
@@ -123,7 +124,7 @@ void MainGame::ObjectSetting()
     {
       switch (map.GetMapData(x,y))
       {
-      case MapObject::NONE:
+      case MapObject::NONEOBJECT:
         break;
       case MapObject::WALL:
         walls.push_back(Wall(Vec2f(x*MAPCHIP_SIZE - Window::WIDTH / 2, y*MAPCHIP_SIZE - Window::HEIGHT / 2)));
@@ -254,7 +255,7 @@ void MainGame::Result()
       data.clear = true;
       read.SetData(data);
       clear = true;
-      isEnd = true;
+      sceneChanger->ChangeScene(SceneKey::STAGESELECT);
     }
   }
 }
@@ -305,7 +306,7 @@ void MainGame::PauseUpdate()
     {
       seSelect.play();
       bgm.stop();
-      isEnd = true;
+      sceneChanger->ChangeScene(SceneKey::STAGESELECT);
     }
   }
 }
@@ -317,6 +318,6 @@ void MainGame::CheckDead()
 {
   if (player.CheakDead())
   {
-    SetUp();
+    SetUp(stageNum);
   }
 }

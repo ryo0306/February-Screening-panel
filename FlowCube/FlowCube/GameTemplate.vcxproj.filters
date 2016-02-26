@@ -76,6 +76,9 @@
     <Filter Include="Swipe">
       <UniqueIdentifier>{5589a624-e4a2-40fe-9ea5-129a65919c72}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scene\SceneManager">
+      <UniqueIdentifier>{1666b83f-668a-482b-ad54-bd73573850e1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\lib\appEnv.hpp">
@@ -216,6 +219,16 @@
     <ClInclude Include="src\Swipe.h">
       <Filter>Swipe</Filter>
     </ClInclude>
+    <ClInclude Include="src\Task.h" />
+    <ClInclude Include="src\SceneChanger.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SceneManager.h">
+      <Filter>Scene\SceneManager</Filter>
+    </ClInclude>
+    <ClInclude Include="src\StageNum.h">
+      <Filter>Class</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\lib\appEnv.cpp">
@@ -335,6 +348,9 @@
     </ClCompile>
     <ClCompile Include="src\Swipe.cpp">
       <Filter>Swipe</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SceneManager.cpp">
+      <Filter>Scene\SceneManager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
