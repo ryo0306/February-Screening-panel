@@ -1,0 +1,54 @@
+﻿2016/02/26 18:53:46 にビルドを開始しました。
+     1>ノード 2 上のプロジェクト "C:\Users\vantan\Documents\GitHub\February-Screening-panel\FlowCube\GameTemplate.vcxproj" (Build ターゲット)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /MP /Od /D WIN32 /D _DEBUG /D _WINDOWS /D DEBUG /D _ITERATOR_DEBUG_LEVEL=0 /D PRODUCT_NAME=GameTemplate /GF /Gm- /EHsc /RTC1 /MDd /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt src\Pendulum.cpp
+         Pendulum.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\vantan\Documents\GitHub\February-Screening-panel\FlowCube\GameTemplate.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\vantan\Documents\GitHub\February-Screening-panel\FlowCube\GameTemplate.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"mainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\vantan\Documents\GitHub\February-Screening-panel\FlowCube\GameTemplate.lib" /MACHINE:X64 x64\Debug\Collsion.obj
+         x64\Debug\Easing.obj
+         x64\Debug\Goal.obj
+         x64\Debug\appEnv.obj
+         x64\Debug\audio.obj
+         x64\Debug\camera2D.obj
+         x64\Debug\fileUtil.obj
+         x64\Debug\font.obj
+         x64\Debug\gamePad.obj
+         x64\Debug\glExt.obj
+         x64\Debug\glfwWindow.obj
+         x64\Debug\glTexture.obj
+         x64\Debug\graph.obj
+         x64\Debug\matrix.obj
+         x64\Debug\os_osx.obj
+         x64\Debug\os_win.obj
+         x64\Debug\png.obj
+         x64\Debug\random.obj
+         x64\Debug\streaming.obj
+         x64\Debug\streamWav.obj
+         x64\Debug\texture.obj
+         x64\Debug\utils.obj
+         x64\Debug\wav.obj
+         x64\Debug\LogoRead.obj
+         x64\Debug\Magnet.obj
+         x64\Debug\main.obj
+         x64\Debug\MainGame.obj
+         x64\Debug\Map.obj
+         x64\Debug\Particle.obj
+         x64\Debug\Pendulum.obj
+         x64\Debug\PendulumAction.obj
+         x64\Debug\Player.obj
+         x64\Debug\ResourceManager.obj
+         x64\Debug\Result.obj
+         x64\Debug\SceneManager.obj
+         x64\Debug\StageRead.obj
+         x64\Debug\StageSelect.obj
+         x64\Debug\Swipe.obj
+         x64\Debug\Title.obj
+         x64\Debug\TutorialWindow.obj
+         x64\Debug\UiBox.obj
+         x64\Debug\Wall.obj
+         GameTemplate.vcxproj -> C:\Users\vantan\Documents\GitHub\February-Screening-panel\FlowCube\GameTemplate.exe
+     1>プロジェクト "C:\Users\vantan\Documents\GitHub\February-Screening-panel\FlowCube\GameTemplate.vcxproj" (Build ターゲット) のビルドが完了しました。
+
+ビルドに成功しました。
+
+経過時間 00:00:02.26
